@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ url('/supply/save/') }}" method="post" id="admittedForm">
+            <form action="{{ url('/supply/save/') }}" method="post" id="admittedForm" onsubmit="myButton.disabled = true; return true;">
                 {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="submit" class="btn btn-success" name="myButton">Save</button>
                 </div>
             </form>
         </div>

@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="{{ asset('/images') }}//favicon.png" sizes="16x16" type="image/png">
 
-    <title>Login: COVID Monitoring System</title>
+    <title>Login: CSR Inventory System</title>
 
 
     <!-- Bootstrap core CSS -->

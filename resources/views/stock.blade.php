@@ -1,7 +1,9 @@
 @extends('app')
 
 @section('css')
-
+    <style>
+        #loader-wrapper { visibility: visible; }
+    </style>
 @endsection
 
 @section('body')
@@ -59,9 +61,19 @@
                 ?>
                 <tr class="{{ $expire }}">
                     <td>
-                        <a href="{{ url('/stock/delete/'.$row->id) }}" class="text-decoration-none delete">
-                            <i class="fa fa-trash {{ $expire }} text-danger"></i>
-                        </a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-reorder {{ $expire }}"></i></a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#updateQty">
+                                <i class="fa fa-dropbox"></i> Update Qty
+                            </a>
+                            <a class="dropdown-item" href="#updateExpiration">
+                                <i class="fa fa-calendar"></i> Update Expiration Date
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item delete" href="{{ url('/stock/delete/'.$row->id) }}">
+                                <i class="fa fa-trash"></i> Delete Stock
+                            </a>
+                        </div>
                         {{ $row->brand }}
                     </td>
                     <td>{{ $row->unit }}</td>
@@ -88,12 +100,17 @@
 @section('js')
     <script>
         $(document).ready(function(){
+
             $('.delete').on('click',function(e){
                 e.preventDefault();
                 var r = confirm('Are you sure you want to delete this supply?')
                 if(r==true)
                     window.location = $(this).attr('href')
             })
+
+            setTimeout(function () {
+                $("#loader-wrapper").css('visibility','hidden');
+            },500);
         });
     </script>
 @endsection

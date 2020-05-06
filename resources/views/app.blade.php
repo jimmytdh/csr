@@ -148,33 +148,9 @@
             $("#loader-wrapper").css('visibility','visible');
             $(this).addClass('disabled');
         });
-
-        $("a[href='#taxEmployee']").on('click',function(){
-            $(".taxContent").html('Loading...').load("{{ url('/load/employee/year') }}");
-        });
-    });
-
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $.fn.editable.defaults.mode = 'popup';
-
-    $(document).ready(function() {
-        $('#year').editable({
-            type: 'number',
-            name: 'year',
-            pk: 1,
-            url: "{{ url('/library/year') }}",
-            success: function(data,value){
-                $("#loader-wrapper").css('visibility','visible');
-                window.location.reload();
-            }
-        });
     });
 </script>
-@include('script.analytics')
+{{--@include('script.analytics')--}}
 </body>
 
 </html>
