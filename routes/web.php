@@ -29,6 +29,8 @@ Route::post('/supply/save','SupplyCtrl@save');
 //STOCKS
 Route::get('/stock/{id}','StockCtrl@index');
 Route::get('/stock/delete/{id}','StockCtrl@delete');
+Route::post('/stock/update/qty/{id}','StockCtrl@updateQty');
+Route::post('/stock/update/expiry/{id}','StockCtrl@updateExpiry');
 //END STOCKS
 
 

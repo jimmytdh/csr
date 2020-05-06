@@ -34,6 +34,12 @@
         </div>
     @endif
 
+    @if(session('status')=='updated')
+        <div class="alert alert-success">
+            <i class="fa fa-check"></i> Successfully updated!
+        </div>
+    @endif
+
     @if(session('status')=='deleted')
         <div class="alert alert-warning">
             <i class="fa fa-check"></i> Successfully deleted!
@@ -63,10 +69,10 @@
                     <td>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-reorder {{ $expire }}"></i></a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#updateQty">
+                            <a class="dropdown-item" href="#updateQty" data-toggle="modal" data-id="{{ $row->id }}" data-qty="{{ $row->qty }}">
                                 <i class="fa fa-dropbox"></i> Update Qty
                             </a>
-                            <a class="dropdown-item" href="#updateExpiration">
+                            <a class="dropdown-item" href="#updateExpiry" data-toggle="modal" data-id="{{ $row->id }}" data-date="{{ $row->date_expiration }}">
                                 <i class="fa fa-calendar"></i> Update Expiration Date
                             </a>
                             <div class="dropdown-divider"></div>
@@ -94,7 +100,8 @@
 @endsection
 
 @section('modal')
-
+@include('modal.updateQty')
+@include('modal.updateExpiry')
 @endsection
 
 @section('js')
@@ -106,7 +113,23 @@
                 var r = confirm('Are you sure you want to delete this supply?')
                 if(r==true)
                     window.location = $(this).attr('href')
-            })
+            });
+
+            $('a[href="#updateQty"]').on('click',function(){
+                var id = $(this).data('id');
+                var qty = $(this).data('qty');
+                var form = $('#updateQty').find('form');
+                $('#updateQty').find('#qty').val(0).val(qty);
+                form.attr('action',"{{ url('/stock/update/qty/') }}/"+id);
+            });
+
+            $('a[href="#updateExpiry"]').on('click',function(){
+                var id = $(this).data('id');
+                var date = $(this).data('date');
+                var form = $('#updateExpiry').find('form');
+                $('#updateExpiry').find('#date_expiration').val("{{ date('Y-m-d') }}").val(date);
+                form.attr('action',"{{ url('/stock/update/expiry/') }}/"+id);
+            });
 
             setTimeout(function () {
                 $("#loader-wrapper").css('visibility','hidden');

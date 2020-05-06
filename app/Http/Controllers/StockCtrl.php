@@ -33,4 +33,16 @@ class StockCtrl extends Controller
         Stocks::find($id)->delete();
         return redirect()->back()->with('status','deleted');
     }
+
+    function updateQty(Request $req, $id)
+    {
+        Stocks::find($id)->update(['qty' => $req->qty]);
+        return redirect()->back()->with('status','updated');
+    }
+
+    function updateExpiry(Request $req, $id)
+    {
+        Stocks::find($id)->update(['date_expiration' => $req->date_expiration]);
+        return redirect()->back()->with('status','updated');
+    }
 }
