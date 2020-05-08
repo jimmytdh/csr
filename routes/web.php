@@ -20,6 +20,7 @@ Route::post('/login/validate','LoginCtrl@validateLogin');
 
 //SUPPLIES
 Route::get('/supply','SupplyCtrl@index');
+Route::post('/supply','SupplyCtrl@search');
 Route::get('/supply/list','SupplyCtrl@getSupplies');
 Route::get('/supply/brand','SupplyCtrl@getBrands');
 Route::post('/supply/save','SupplyCtrl@save');

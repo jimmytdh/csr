@@ -12,23 +12,12 @@
     <h2 class="text-success title-header">Supply <small class="text-muted">Panel</small></h2>
     <section class="content">
         <div class="table-responsive-sm">
-{{--            <div class="col-lg-3 col-sm-12 pull-right mb-2">--}}
-{{--                <div class="input-group">--}}
-{{--                    <input type="text" class="form-control" placeholder="Search Supply..."/>--}}
-{{--                    <div class="input-group-append">--}}
-{{--                        <button class="btn btn-info" type="button">Go!</button>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="form-group col-lg-3 col-sm-12 form-inline">--}}
-{{--                <button type="button" data-target="#stockin" data-toggle="modal" class="btn btn-success col-sm-6"><i class="fa fa-download"></i> Stock-In</button>--}}
-{{--                <button type="button" class="btn btn-danger col-sm-6"><i class="fa fa-upload"></i> Stock-Out</button>--}}
-{{--            </div>--}}
             <div class="row mb-2">
                 <div class="col-lg-12">
-                    <form action="" class="form-inline">
+                    <form action="{{ url('/supply') }}" class="form-inline" method="post">
+                        {{ csrf_field() }}
                         <div class="form-group">
-                            <input type="text" placeholder="Search..." class="form-control mr-1">
+                            <input type="text" placeholder="Search..." value="{{ Session::get('searchSupply') }}" name="search" class="form-control mr-1">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-default btn-flat mr-1">
@@ -41,10 +30,6 @@
                         <div class="form-group">
                             <button class="btn-danger btn btn-flat mr-1" type="button"><i class="fa fa-upload"></i> Stock-Out</button>
                         </div>
-                        <div class="form-group">
-                            <button class="btn-info btn btn-flat mr-1" type="button"><i class="fa fa-tachometer"></i> Convert</button>
-                        </div>
-
                     </form>
                 </div>
 
@@ -83,9 +68,6 @@
                                 <a class="dropdown-item" href="{{ url('/stock/'.$row->id) }}">
                                     <i class="fa fa-file-text"></i> View Sub Supplies
                                 </a>
-                                <a class="dropdown-item" href="{{ url('/supply/delete/'.$row->id) }}">
-                                    <i class="fa fa-tachometer"></i> Convert
-                                </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ url('/supply/delete/'.$row->id) }}">
                                     <i class="fa fa-trash"></i> Delete Supply
@@ -101,6 +83,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $data->links() }}
             @else
             <div class="alert alert-warning">
                 <i class="fa fa-exclamation-triangle"></i> No data found!

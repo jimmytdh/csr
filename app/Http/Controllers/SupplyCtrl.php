@@ -32,6 +32,12 @@ class SupplyCtrl extends Controller
         ]);
     }
 
+    function search(Request $req)
+    {
+        Session::put('searchSupply',$req->search);
+        return self::index();
+    }
+
     function save(Request $req)
     {
         $supply_id = self::checkName($req->name,$req->unit);

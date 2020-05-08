@@ -15,7 +15,7 @@ class StockCtrl extends Controller
 
     function index($id)
     {
-        $name = Supply::find($id)->name;
+        $supply = Supply::find($id);
         $data = Stocks::where('supply_id',$id)
             ->orderBy('date_expiration','asc')
             ->paginate(30);
@@ -24,7 +24,8 @@ class StockCtrl extends Controller
             'menu' => 'manage',
             'sub' => 'supply',
             'data' => $data,
-            'name' => $name
+            'name' => $supply->name,
+            'unit' => $supply->unit
         ]);
     }
 

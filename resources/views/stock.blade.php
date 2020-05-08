@@ -75,6 +75,9 @@
                             <a class="dropdown-item" href="#updateExpiry" data-toggle="modal" data-id="{{ $row->id }}" data-date="{{ $row->date_expiration }}">
                                 <i class="fa fa-calendar"></i> Update Expiration Date
                             </a>
+                            <a class="dropdown-item" href="#convert" data-toggle="modal" data-id="{{ $row->id }}" data-unit="{{ $row->unit }}">
+                                <i class="fa fa-tachometer"></i> Convert
+                            </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item delete" href="{{ url('/stock/delete/'.$row->id) }}">
                                 <i class="fa fa-trash"></i> Delete Stock
@@ -102,6 +105,7 @@
 @section('modal')
 @include('modal.updateQty')
 @include('modal.updateExpiry')
+@include('modal.convert')
 @endsection
 
 @section('js')

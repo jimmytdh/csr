@@ -6,6 +6,8 @@ $(function () {
 
     var countriesArray = $.map(countries, function (value, key) { return { value: value, data: key }; });
 
+    console.log(countriesArray);
+
     // Setup jQuery ajax mock:
     $.mockjax({
         url: '*',

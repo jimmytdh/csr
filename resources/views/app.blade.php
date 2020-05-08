@@ -21,7 +21,7 @@
         fieldset {
             margin-top: 12px;
             border: 1px solid #39c;
-            padding: 12px;
+            padding: 0px 12px;
             -moz-border-radius: 8px;
             border-radius: 8px;
         }
@@ -81,7 +81,7 @@
 {{--                        <a class="dropdown-item {{ (isset($sub) && $sub=='brgy') ? 'active':'' }}" href="{{ url('/library/brgy') }}"><i class="fa fa-map"></i> Barangay</a>--}}
 {{--                        <a class="dropdown-item {{ (isset($sub) && $sub=='muncity') ? 'active':'' }}" href="{{ url('/library/muncity') }}"><i class="fa fa-map"></i> Municipality/City</a>--}}
 {{--                        <a class="dropdown-item {{ (isset($sub) && $sub=='province') ? 'active':'' }}" href="{{ url('/library/province') }}"><i class="fa fa-map"></i> Province</a>--}}
-                        <a class="dropdown-item {{ (isset($sub) && $sub=='zero') ? 'active':'' }}" href="{{ url('/report/zero') }}"><i class="fa fa-dropbox"></i> Zero Stock</a>
+                        <a class="dropdown-item {{ (isset($sub) && $sub=='zero') ? 'active':'' }}" href="{{ url('/report/zero') }}"><i class="fa fa-dropbox"></i> Zero Stocks</a>
                         <a class="dropdown-item {{ (isset($sub) && $sub=='expire') ? 'active':'' }}" href="{{ url('/report/expire') }}"><i class="fa fa-exclamation-triangle"></i> Expired Supplies</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item {{ (isset($sub) && $sub=='stockinlogs') ? 'active':'' }}" href="{{ url('/report/logs/in') }}"><i class="fa fa-download"></i> Stock-In Logs</a>
